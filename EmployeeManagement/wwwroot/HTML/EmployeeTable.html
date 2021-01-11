@@ -1,0 +1,72 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="/css/EmployeeTable.css" />
+    <link rel="stylesheet" href="/css/Home.css" />
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+</head>
+<body>
+    <!-- HEading and Main Menu-->
+    <form class="forms">
+        <div class="header">
+            <div class="container">
+                <h1>EMPLOYEE  MANAGEMENT  SERVICE</h1>
+            </div>
+            <div class="footer-btm wow fadeInLeft animated" data-wow-delay=".5s">
+                <div class="container">
+                    <div class="navigation">
+                        <nav class="navbar navbar-default">
+                            <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                                <nav class="cl-effect-1">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="Home.html">Home</a></li>
+                                        <li class="active"><a href="EmployeeTable.html">Employee Management</a></li>
+                                        <li><a href="forgot.html">Reset Password</a></li>
+                                        <li><a href="Login.html">Logout</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        <!--Second Form Data-->
+        <center><h2>Welcome To Employee Management</h2></center>
+        <form class="EmployeeTable">
+            <table class="table">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Mobile</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                <tr>
+                    <td>Imran</td>
+                    <td>Shaikh</td>
+                    <td>M</td>
+                    <td>imraninfo.1996@gmail.com</td>
+                    <td>Dighi Pune</td>
+                    <td>Sangamwadi</td>
+                    <td>Maharashtra</td>
+                    <td>123456</td>
+                    <td>Mobile</td>
+                    <td>
+                        <button type="submit" class="edit">Edit</button>
+                        <button type="submit" class="delete">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+</body>
+</html>

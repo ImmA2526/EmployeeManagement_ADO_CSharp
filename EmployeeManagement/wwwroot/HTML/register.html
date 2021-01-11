@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="/css/registerStyle.css" />
+    <!--<link rel="stylesheet" href="/css/Home.css" />-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="/js/validate.js" ></script>
+</head>
+
+<body>
+    <!-- HEading and Main Menu-->
+    <div class="header">
+        <div class="h1">
+            <h1>EMPLOYEE  MANAGEMENT  SERVICE</h1>
+        </div>
+        <div class="footer-btm wow fadeInLeft animated" data-wow-delay=".5s">
+            <div class="container">
+                <div class="navigation">
+                    <nav class="navbar navbar-default">
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <nav class="cl-effect-1">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="Home.html">Home</a></li>
+                                    <li><a href="EmployeeTable.html">Employee Management</a></li>
+                                    <li><a href="ResetPassword.html">Reset Password</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="form" onsubmit="return validation()">
+        <div class="h2"> <h2>Registration Form</h2></div>
+        <!--Names-->
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-4">
+                <input type="text" id="fname" placeholder="First Name">
+                <span id="nameError" class="text-danger"></span>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" id="lname" placeholder="Last Name">
+                <span id="namesError" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--City State Zip-->
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">City</label>
+            <div class="col-sm-3">
+                <input type="text" id="citys" placeholder="City">
+                <span id="cityError" class="text-danger"></span>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="states" placeholder="State">
+                <span id="stateError" class="text-danger"></span>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" id="pin"  placeholder="ZipCode">
+                <span id="pinError" class="text-danger"></span>
+            </div>
+        </div>
+
+    <!--Email Phone-->
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Phone & Email </label>
+            <div class="col-sm-3">
+                <input type="text" id="mobile" placeholder="Mobile Number">
+                <span id="mobileError" class="text-danger"></span>
+            </div>
+            <div class="col-sm-5">
+                <input type="email" id="emails" placeholder="Email Id">
+                <span id="emailError" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--Passwords-->
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-8">
+                <input type="password" id="passwords" placeholder="Password">
+                <span id="passError" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Confirm Password</label>
+            <div class="col-sm-8">
+                <input type="password" id="password1" placeholder="Confirm Password">
+                <span id="checkpassError" class="text-danger"></span>
+            </div>
+        </div>
+        <!--Buttons-->
+        <div class="form-group row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-8">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+                <a href="Login.html">Login</a>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
