@@ -93,7 +93,5 @@ namespace EmployeeManagement.Controllers
                 return this.BadRequest();
             }
         }
-
-
     }
 }
