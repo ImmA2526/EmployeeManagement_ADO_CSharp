@@ -1,6 +1,9 @@
+using EmployeeManagement.Models;
+using EmployeeRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,21 +16,25 @@ namespace EmployeeManagement
 {
     public class Startup
     {
+        public IConfiguration configuration { get; }
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
-        }
+            this.configuration = configuration;
 
-        public IConfiguration Configuration { get; }
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddMvc();
+            services.AddDbContext<EmployeeContext>
+            (options => options.UseSqlServer(configuration["Data:ConnectionStrings:DefaultConnection"]));
+            services.AddTransient<IRepository, Repository>();
+            services.AddControllers().AddNewtonsoftJson();    
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {

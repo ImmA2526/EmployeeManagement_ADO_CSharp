@@ -2,8 +2,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
-
 .form {
     
     border: 2px solid #f1f1f1;
@@ -17,7 +15,6 @@
     padding-bottom: 20px;
     margin-top: 20px;
 }
-
 
 .group {
     display: flex;
@@ -35,10 +32,21 @@
    /*background-color:gray;*/
 }
 
+/*Registration*/
 .forgotdiv {
-    padding-left: 450px;
-    padding-left: inherit;
-   margin-top:40px;
+    padding-left: 330px;
+   /* padding-left: inherit;*/
+    margin-top:24px;
+    margin-bottom:4px;
+
+}
+/*Forgot Link*/
+
+.forgot {
+    
+    padding-left: 200px;
+    margin-top: 6px;
+    margin-bottom:20px;
 }
 .regdiv {
     padding-left: 350px;
@@ -90,7 +98,7 @@ button:hover {
         background-color:dodgerblue;
     }
 
-a {
+.a {
     text-decoration: none;
     padding-left: 20%;
 }

@@ -5,47 +5,89 @@
     <title>Employee Management</title>
     <link rel="stylesheet" href="/css/login.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script type="text/javascript" src="/js/validate.js"></script>
-
 </head>
 
 <body>
     <center>
-        <form class="logform"onsubmit="return validation()" method="get" action="Home.html" >
+        <form class="logform">
             <div class="h2">
-            <h2>Employee Management</h2>
-            <h2>Login</h2>
-                </div>
+                <h2>Employee Management</h2>
+                <h2>Login</h2>
+            </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-6">
-                    <input type="email" id="emails" placeholder="Email">
-                    <span id="emailError" class="text-danger"></span>
+                    <input type="email" id="email" name="EmailId" placeholder="Email Id">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-6">
-                    <input type="password" data-minlength="10" id="password" placeholder="Password" required>
-                    <div class="help-block">Minimum 8 character</div>
+                    <input type="password" id="password" name="Password" placeholder="Password">
                 </div>
             </div>
 
             <div class="form-group row">
+                <div class=" forgot"><a href="forgot.html">Forgot Password</a></div>
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary">Log in</button>
-
+                    <button type="submit" id="btnSave" class="btn btn-primary">Login</button>
                 </div>
             </div>
-
             <div class="forgotdiv">
                 <div>
-                    <a href="forgot.html">forgot password</a>
                     <a href="register.html">Registration</a>
                 </div>
             </div>
         </form>
     </center>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSave").click(function () {
+                var emailId = document.getElementById('email').value;
+                var password = document.getElementById('password').value;             
+                var email = /^[a-zA-Z0-9.]{1,}@[a-z]{1,5}[.a-z]{1,5}[.]{1}[a-z]{1,4}$/;
+                var pass = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[~!@#$%^&*.-])[a-zA-Z0-9].{8,}$/;
+                if (emailId.match(email))
+                {
+                    if (password.match(pass))
+                    {
+                    }
+                    else {
+                        alert("Invalid Password.");
+                        return false;
+                    }
+                }
+                else
+                {
+                    alert("Invalid email.");
+                    return false;
+                }
+
+                var Employe = {};
+                Employe.Email = $("#email").val();
+                Employe.Password = $("#password").val();
+                console.log(JSON.stringify(Employe));
+                $.ajax({
+                    type: "POST",
+                    url: "/api/loginEmployee",
+                    data: JSON.stringify(Employe),
+                    dataType: "",
+                    contentType: "application/json; charset=utf-8",
+                    success: function () {
+                        alert("Login  Successfully....");
+                        window.location.href = "https://localhost:44302/HTML/Home.html";
+                        return true;
+                    },
+                    error: function () {
+                        alert("Check Your Credential....");
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 </body>
 </html>

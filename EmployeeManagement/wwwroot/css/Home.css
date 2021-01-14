@@ -9,6 +9,12 @@ body {
     text-align: center;
 }
 
+.logout {
+    display:grid;
+    justify-content:right;
+
+}
+
 .navbar {
     min-height: 0px !important;
     margin-bottom: 0px !important;

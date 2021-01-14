@@ -9,8 +9,9 @@
 
 <body>
 
-    <form class="form">
-        <div class="h2"> <h2>Registration Form</h2></div>
+    <center><form class="form">
+        <h1>EMPLOYEE MANAGEMENT SERVICES</h1>
+        <div class="h2"> <h2>Edit / Update Record</h2></div>
         <!--Names-->
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Name</label>
@@ -43,42 +44,21 @@
 
         <!--Email Phone-->
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Phone & Email </label>
-            <div class="col-sm-3">
+            <label class="col-sm-4 col-form-label">Phone Number </label>
+            <div class="col-sm-4">
                 <input type="text" id="mobile" name="MobileNo" placeholder="Mobile Number">
                 <span id="mobileError" class="text-danger"></span>
             </div>
-            <div class="col-sm-5">
-                <input type="email" id="email" name="EmailId" placeholder="Email Id">
-                <span id="emailError" class="text-danger"></span>
-            </div>
         </div>
-
-        <!--Passwords-->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-8">
-                <input type="password" id="password" name="Password" placeholder="Password">
-                <span id="passError" class="text-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Confirm Password</label>
-            <div class="col-sm-8">
-                <input type="password" id="password1" placeholder="Confirm Password">
-                <span id="checkpassError" class="text-danger"></span>
-            </div>
-        </div>
+            
         <!--Buttons-->
         <div class="form-group row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-8">
-                <button type="submit" id="btnSave" class="btn btn-primary">Register</button>
-                <a href="Login.html">Login</a>
+            <!--<div class="col-sm-4"></div>-->
+            <div class="col-sm-12">
+                <button type="submit" id="btnSave" class="btn btn-primary">Edit</button>
             </div>
         </div>
-    </form>
+    </form></center>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
@@ -91,19 +71,14 @@
             var City = document.getElementById('city').value;
             var State = document.getElementById('state').value;
             var Zip = document.getElementById('pin').value;
-            var emailId = document.getElementById('email').value;
             var mobile = document.getElementById('mobile').value;
-            var password = document.getElementById('password').value;
-            var confirmpasword = document.getElementById('password1').value;
-
+         
                 var name = /^[A-Z]{1}[a-zA-Z]{2,}$/;
                 var city = /^[A-Z]{1}[a-zA-Z]{2,}$/;
                 var state = /^[A-Z]{1}[a-zA-Z]{2,}$/;
                 var zipcode = /^[0-9]{6}$/;
-                var email = /^[a-zA-Z0-9.]{1,}@[a-z]{1,5}[.a-z]{1,5}[.]{1}[a-z]{1,4}$/;
                 var mobileno = /^[0-9]{10}$/;
-                var pass = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[~!@#$%^&*.-])[a-zA-Z0-9].{8,}$/;
-
+                
 
             if (firstname.match(name)) {
                 document.getElementById('nameError').innerHTML = " ";
@@ -146,13 +121,6 @@
                 return false;
             }
 
-            if (emailId.match(email)) {
-                document.getElementById('emailError').innerHTML = " ";
-
-            } else {
-                document.getElementById('emailError').innerHTML = "Invalid Email.";
-                return false;
-            }
 
             if (mobile.match(mobileno)) {
                 document.getElementById('mobileError').innerHTML = " ";
@@ -161,23 +129,6 @@
                 document.getElementById('mobileError').innerHTML = "Invalid Mobile Number.";
                 return false;
             }
-
-            if (password.match(pass)) {
-                document.getElementById('passError').innerhtml = " ";
-
-            } else {
-                document.getElementById('passError').innerhtml = "invalid password.";
-                return false;
-            }
-
-            if (password == confirmpasword) {
-                document.getElementById('checkpassError').innerhtml = " ";
-
-            } else {
-                document.getElementById('checkpassError').innerhtml = "password not match.";
-                return false;
-            }
-
            
             var Employe = {};
             Employe.FirstName = $("#firstName").val();
@@ -186,22 +137,20 @@
             Employe.State = $("#state").val();
             Employe.Zip = $("#pin").val();
             Employe.Mobile = $("#mobile").val();
-            Employe.Email = $("#email").val();
-            Employe.Password = $("#password").val();
             console.log(JSON.stringify(Employe));
 
             $.ajax({
                 type: "POST",
-                url: "https://localhost:44302/HTML/Login.html",
+                url: "https://localhost:44302/api/addEmployee",
                 data: JSON.stringify(Employe),
-                dataType: "",
+
                 contentType: "application/json; charset=utf-8",
                 success: function () {
-                    alert("Registration Success...");
+                    alert("Edited Suscces");
                     return true;
                 },
                 error: function () {
-                    alert("Check Your Credential...");
+                    alert("Unable To Edit");
                 }
             });
 
