@@ -74,6 +74,9 @@ namespace EmployeeManagement.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes the personal details.
+        /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpDelete]
