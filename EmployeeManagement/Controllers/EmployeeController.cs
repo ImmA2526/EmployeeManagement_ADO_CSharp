@@ -54,7 +54,6 @@ namespace EmployeeManagement.Controllers
             }
         }
 
-
         /// <summary>
         /// Gets the employee.
         /// </summary>
@@ -80,11 +79,11 @@ namespace EmployeeManagement.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpDelete]
-        [Route("api/delete")]
-        public IActionResult DeletePersonalDetails(string id)
+        [Route("api/deleteRecord/{id}/")]
+        public IActionResult DeletePersonalDetails([FromRoute]int id)
         {
-            var result = this.repository.DeleteEmploye(id);
-            if (result.Equals("SUCCESS"))
+            var result = this.repository.DeleteEmployee(id);
+            if (result.Equals("Employee Deleted"))
             {
                 return this.Ok(result);
             }

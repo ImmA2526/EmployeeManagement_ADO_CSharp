@@ -73,13 +73,12 @@
             var Zip = document.getElementById('pin').value;
             var mobile = document.getElementById('mobile').value;
          
-                var name = /^[A-Z]{1}[a-zA-Z]{2,}$/;
-                var city = /^[A-Z]{1}[a-zA-Z]{2,}$/;
-                var state = /^[A-Z]{1}[a-zA-Z]{2,}$/;
-                var zipcode = /^[0-9]{6}$/;
-                var mobileno = /^[0-9]{10}$/;
+            var name = /^[A-Z]{1}[a-zA-Z]{2,}$/;
+            var city = /^[A-Z]{1}[a-zA-Z]{2,}$/;
+            var state = /^[A-Z]{1}[a-zA-Z]{2,}$/;
+            var zipcode = /^[0-9]{6}$/;
+            var mobileno = /^[0-9]{10}$/;
                 
-
             if (firstname.match(name)) {
                 document.getElementById('nameError').innerHTML = " ";
 
@@ -112,7 +111,6 @@
                 return false;
             }
 
-
             if (Zip.match(zipcode)) {
                 document.getElementById('pinError').innerHTML = ""
             }
@@ -120,7 +118,6 @@
                 document.getElementById('pinError').innerHTML = "Enter 6 Digit";
                 return false;
             }
-
 
             if (mobile.match(mobileno)) {
                 document.getElementById('mobileError').innerHTML = " ";

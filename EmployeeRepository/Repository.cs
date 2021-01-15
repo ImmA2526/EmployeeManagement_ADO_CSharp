@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace EmployeeRepository
 {
-
     public class Repository : IRepository
     {
         private readonly EmployeeContext employeeContext;
@@ -51,7 +50,7 @@ namespace EmployeeRepository
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public string DeleteEmployee(string id)
+        public string DeleteEmployee(int id)
         {
             EmployeeModel employeeDelete = employeeContext.EmployeeTB.Find(id);
             if (employeeDelete == null)
@@ -60,9 +59,8 @@ namespace EmployeeRepository
             }
 
             employeeContext.EmployeeTB.Remove(employeeDelete);
-            employeeContext.SaveChanges();
-
-            return "SUCCESS";
+            employeeContext.SaveChangesAsync();
+            return "Employee Deleted";
         }
     }
 }

@@ -2,19 +2,21 @@
 /*Button*/
 .delete {
     background-color: orangered;
-    height: 60px;
-    width: 100px;
-    border-radius: 10px;
+    height: 30px;
+    width: 80px;
+    border-radius: 14px;
     text-decoration: none;
     cursor: pointer;
+    color:white;
 }
 .edit {
-    background-color: lightskyblue;
-    height: 60px;
-    width: 100px;
-    border-radius: 8px;
+    background-color:cornflowerblue;
+    height: 30px;
+    width: 80px;
+    border-radius: 14px;
     cursor: pointer;
     text-decoration: none;
+    color: white;
 }
 
 tr:nth-child(even) {
@@ -25,8 +27,8 @@ table {
     border-collapse: collapse;
     width: 80%;
     border: 1px solid #ff6a00;
-    padding: 12px 25px;
-    
+    padding: 10px 12px;
+ background-color:palegreen;   
 }
 
 ​ tr:hover {
@@ -44,6 +46,10 @@ td {
     padding: 10px 18px;
 }
 
+input {
+
+
+}
 
 thead td {
     background-color: #422E50;
