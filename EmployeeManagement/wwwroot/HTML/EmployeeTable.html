@@ -2,100 +2,158 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-q6e9rhvbiyzfjoft+2mjbhaewldlvi9ioyy5n3zv9zzttmi3uksdqrvvoxmfooao" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <title>Employee Management</title>
+
     <link rel="stylesheet" href="/css/EmployeeTable.css" />
-    <link rel="stylesheet" href="/css/Home.css" />
+
 </head>
 
 <body>
-    <!-- HEading and Main Menu-->
-    <form class="forms">
-        <div class="header">
-            <div class="container">
-                <h1>EMPLOYEE  MANAGEMENT  SERVICE</h1>
-            </div>
-            <div class="footer-btm wow fadeInLeft animated" data-wow-delay=".5s">
-                <div class="container">
-                    <div class="navigation">
-                        <nav class="navbar navbar-default">
-                            <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-                                <nav class="cl-effect-1">
-                                    <ul class="nav navbar-nav">
-                                        <li><a href="Home.html">Home</a></li>
-                                        <li class="active"><a href="EmployeeTable.html">Employee Management</a></li>
-                                        <li><a href="ResetPassword.html">Reset Password</a></li>
-                                        <li class="logout"><a href="Login.html">Logout</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+<form class="forms1">
+    <div class="header">
+        <div class="heading">
+            <h1>EMPLOYEE MANAGEMENT SERVICE</h1>
+        </div>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="EmployeeTable.html">Employee Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ResetPassword.html">Reset Password</a>
+            </li>
+            <li class="nav-item" id="logout">
+                <a class="nav-link " href="Login.html">Logout</a>
+            </li>
+        </ul>
         </div>
     </form>
 
     <!--Second Form Data-->
-    <center><h2>Welcome To Employee Management</h2></center>
-    <form class="EmployeeTable">
-        <center><table class="table" id="Employee">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
-                    <th colspan="4">Action</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table></center>
-    </form>
+        <center><h2>Welcome To Employee Management</h2></center>
+        <div class="EmployeeTable">
+            <center>
+                <table class="table" id="Employee">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zip</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th colspan="4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </center>
+        </div>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $.ajax({               
-                type: "GET",
-                url: "/api/getEmployee",
-                dataType: "Json",
-                success: function (data) {
-                    var EmployeeRecord = $("#Employee tbody");
-                    $(data).each(function (index, Emp) {
-                        EmployeeRecord.append('<tr><td>' + Emp.employeeId + '</td><td>' + Emp.firstName + '</td><td>' + Emp.lastName + ' </td><td>'
-                            + Emp.city + '</td><td>' + Emp.state + '</td><td>' + Emp.zip + '</td><td>' + Emp.email +
-                            '</td><td>' + Emp.mobile + '<td ><button type =submit  onclick=editRow(' + Emp.employeeId + ') class=edit>Edit</button></td>' +
-                            '<td ><input type="button" id="delete" onclick="deleteRow(' + Emp.employeeId + ')" class="delete" value="Delete" ></td>');
-                        //console.log(Emp);
-                    });
-                }
-            });
-        });
+        <!-- Modal -->
+        <div class="modal fade" id="models" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <center> <h5 class="modal-title" id="exampleModalLongTitle">EMPLOYEE MANAGEMENT</h5></center>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <center> <div class="h5"> <h5>Edit / Update Record</h5></div></center>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" value="firstName" name="FirstName" placeholder="First Name">
+                                <span id="nameError" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" id="editRow" value="lastName" name="LastName" placeholder="Last Name">
+                                <span id="namesError" class="text-danger"></span>
+                            </div>
+                        </div>
 
-        ///Delete Method 
-        function deleteRow(employeeId) {
-            $(function () {
-                $("#delete").click(function () {
-                    console.log({ "id": employeeId });
-                    $.ajax ({
-                        type: "DELETE",
-                        url: "/api/deleteRecord/" + employeeId,            
-                        success:function (data) {
-                            alert("Data Deleted Succesfully");
-                            DataTables.ajax.reload();
-                            return true;
-                        },
-                        error: function () {
-                            alert("Something Went Wrong");
-                        }
-                    });
+                        <!--City State Zip-->
+
+                        <div class="form-group row">
+                            <label class="col-sm-1 col-form-label">City</label>
+                            <div class="col-sm-4">
+                                <input type="text" id="city" name="Citi" placeholder="City">
+                                <span id="cityError" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" id="state" name="State" placeholder="State">
+                                <span id="stateError" class="text-danger"></span>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" id="pin" name="Pincode" placeholder="ZipCode">
+                                <span id="pinError" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!--Email Phone-->
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Phone Number </label>
+                            <div class="col-sm-4">
+                                <input type="text" id="mobile" name="MobileNo" placeholder="Mobile Number">
+                                <span id="mobileError" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/api/getEmployee",
+                    dataType: "Json",
+                    success: function (data) {
+                        var EmployeeRecord = $("#Employee tbody");
+                        $(data).each(function (index, Emp) {
+                            EmployeeRecord.append('<tr><td>' + Emp.employeeId + '</td><td>' + Emp.firstName + '</td><td>' + Emp.lastName + ' </td><td>'
+                                + Emp.city + '</td><td>' + Emp.state + '</td><td>' + Emp.zip + '</td><td>' + Emp.email +
+                                '</td><td>' + Emp.mobile + '<td ><input type="button" id="#edit" class="edit" data-toggle="modal" data-target="#models" onclick="editRow(' + Emp.employeeId + ')" value="Edit"></td>' +
+                                '<td ><input type="button" id="delete" onclick="deleteRow(' + Emp.employeeId + ')" class="delete" value="Delete" ></td>');
+                        });
+                    }
                 });
             });
-        }    
-    </script>
+
+            ///Delete Method
+            function deleteRow(employeeId) {
+                $(function () {
+                    $("#delete").click(function () {
+                        confirm("Are You Sure");
+                        console.log({ "id": employeeId });
+                        $.ajax({
+                            type: "DELETE",
+                            url: "/api/deleteRecord/" + employeeId,
+                            success: function (data) {
+                                alert("Data Deleted Succesfully");
+                                window.location.reload();
+                                return true;
+                            },
+                            error: function () {
+                                alert("Something Went Wrong");
+                            }
+                        });
+                    });
+                });
+            }
+        </script>
 </body>
 </html>

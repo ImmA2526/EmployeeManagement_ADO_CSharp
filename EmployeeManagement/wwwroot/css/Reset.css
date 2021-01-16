@@ -1,30 +1,8 @@
-﻿body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
-
-.form {
- 
-    
-    border: 2px solid #f1f1f1;
-    border-radius: 12px;
-    width: 40%;
-    height: 66%;  
-    margin-top:50px;
-}
-
+﻿
 .h2 {
     padding-bottom: 20px;
     margin-top: 20px;
 }
-
-
-/*.group {
-    display: flex;
-    justify-content:center; 
-}
-*/
 
 .logform {
     display: grid;
@@ -32,8 +10,7 @@
     border-radius: 12px;
     width: 30%;
     height: 60%;
-    margin-top: 150px;*/*/
-    /*background-color:gray;*/
+    margin-top: 150px;
 }
 
  input[type=password] {
@@ -41,7 +18,7 @@
     margin: 6px 0;
     box-sizing: border-box;
     border-radius: 8px;
-    width: 30%;
+    width: 40%;
     height: 30px;
     border-color: black;
     margin-left:10%;
@@ -49,27 +26,12 @@
 
 }
 
-    input[type=password].password3 
-    {
-        width:32%;
-        margin-left:46px;
-
-    }
-
-    .confirm {
-        margin-right: 8%;
-    }
-
-
-
 
 label {
     display: grid;
- 
     width: 180px;
     line-height: 35px;
     color: black;
- 
 }
 
 button {

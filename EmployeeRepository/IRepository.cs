@@ -12,5 +12,8 @@ namespace EmployeeRepository
         public IEnumerable<EmployeeModel> GetEmployee(string id);
         public string LoginToSystem(string Email, string Password);
         public string DeleteEmployee(int id);
+        public IEnumerable<EmployeeModel> GetEmployeeBy_ID(int id);
+
+
     }
 }

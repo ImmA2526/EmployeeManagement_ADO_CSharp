@@ -8,9 +8,12 @@
 </head>
 
 <body>
-
     <form class="form">
-        <div class="h2"> <h2>Registration Form</h2></div>
+        <div class="h2">
+            <h2>Employee Management</h2>
+            <h2>Registration Form</h2>
+
+        </div>
         <!--Names-->
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Name</label>
@@ -192,7 +195,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "https://localhost:44302/HTML/Login.html",
+                url: "/api/addEmployee",
                 data: JSON.stringify(Employe),
                 dataType: "",
                 contentType: "application/json; charset=utf-8",
@@ -201,7 +204,7 @@
                     return true;
                 },
                 error: function () {
-                    alert("Check Your Credential...");
+                    alert("Data is not inserting...");
                 }
             });
 

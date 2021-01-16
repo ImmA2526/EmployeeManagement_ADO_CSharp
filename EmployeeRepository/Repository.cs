@@ -62,5 +62,21 @@ namespace EmployeeRepository
             employeeContext.SaveChangesAsync();
             return "Employee Deleted";
         }
+
+
+        /// <summary>
+        /// Gets the employee by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        public IEnumerable<EmployeeModel> GetEmployeeBy_ID(int id)
+        {
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+            employees = employeeContext.EmployeeTB.ToList();
+            var edit = this.employeeContext.EmployeeTB.Where(x => x.EmployeeId == id).FirstOrDefault();
+            EmployeeModel model = this.employeeContext.EmployeeTB.Find(edit);
+            return employees;
+
+        }
     }
 }

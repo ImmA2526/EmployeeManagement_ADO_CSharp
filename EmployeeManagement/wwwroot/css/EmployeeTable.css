@@ -1,4 +1,11 @@
-﻿
+﻿body {
+    background-image: url('1.jpg');
+}
+
+li a:hover {
+    background-color: coral;
+}
+
 /*Button*/
 .delete {
     background-color: orangered;
@@ -9,8 +16,9 @@
     cursor: pointer;
     color:white;
 }
+
 .edit {
-    background-color:cornflowerblue;
+    background-color: cornflowerblue;
     height: 30px;
     width: 80px;
     border-radius: 14px;
@@ -19,16 +27,33 @@
     color: white;
 }
 
+/*Menu*/
+.forms1{
+    border: 2px solid #f1f1f1;
+    border-radius: 12px;
+    width: 300%;
+    height: 40%;
+    background-color: aquamarine;
+}
+
+.logout {
+    display:grid;
+    justify-content:left;
+}
+
 tr:nth-child(even) {
     background-color: #dddddd;
 }
-table {
+
+/*table */
+
+#Employee {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 80%;
     border: 1px solid #ff6a00;
     padding: 10px 12px;
- background-color:palegreen;   
+    background-color: palegreen;
 }
 
 ​ tr:hover {
@@ -46,15 +71,11 @@ td {
     padding: 10px 18px;
 }
 
-input {
 
-
-}
-
-thead td {
-    background-color: #422E50;
+thead th {
+    background-color:black;
     color: white;
-    text-align: justify;
+    text-align: center;
 }
 
 a {

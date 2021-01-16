@@ -26,11 +26,11 @@ namespace EmployeeManagement.Controllers
             var result = this.repository.CreateEmployee(employee);
             if (result.Equals("SUCCESS"))
             {
-                return this.Ok(result);
+                return this.Ok(new { success = true, Message = "Data Added successfully", Data = result });
             }
             else
             {
-                return this.BadRequest();
+                return this.BadRequest(new { success = false, Message = "Data is Not Added Succesfully " });
             }
         }
 
@@ -92,5 +92,28 @@ namespace EmployeeManagement.Controllers
                 return this.BadRequest();
             }
         }
+
+        /// <summary>
+        /// Updates the personal details.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("api/updateRecord")]
+        public IActionResult Edit(int id)
+        {
+            try
+            {
+                IEnumerable<EmployeeModel> employeeList = this.repository.GetEmployeeBy_ID(id);
+                return this.Ok(employeeList);
+            }
+            catch (Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
+        }
+
+
     }
 }
