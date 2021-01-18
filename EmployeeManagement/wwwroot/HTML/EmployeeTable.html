@@ -2,32 +2,33 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-q6e9rhvbiyzfjoft+2mjbhaewldlvi9ioyy5n3zv9zzttmi3uksdqrvvoxmfooao" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <title>Employee Management</title>
 
+    <link rel="stylesheet" href="/css/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/css/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/jquery-3.4.1.slim.min.js"></script>
+    <script type="text/javascript" src="/css/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/css/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/popper.min.js"></script>
+    
     <link rel="stylesheet" href="/css/EmployeeTable.css" />
-
+    <link rel="stylesheet" href="/css/Edit.css" />
+    <title>Employee Management</title>
 </head>
 
 <body>
 <form class="forms1">
     <div class="header">
         <div class="heading">
-            <h1>EMPLOYEE MANAGEMENT SERVICE</h1>
+            <h2>EMPLOYEE MANAGEMENT SERVICE</h2>
         </div>
-        <ul class="nav nav-pills">
-            <li class="nav-item">
+        <ul class="nav nav-pills" id="ok">
+            <li  id="links"class="nav-item">
                 <a class="nav-link active" href="EmployeeTable.html">Employee Management</a>
-            </li>
+            <li id="links">
             <li class="nav-item">
                 <a class="nav-link" href="ResetPassword.html">Reset Password</a>
-            </li>
+            <li id="links">
             <li class="nav-item" id="logout">
                 <a class="nav-link " href="Login.html">Logout</a>
-            </li>
+            <li id="links">
         </ul>
         </div>
     </form>
@@ -37,9 +38,9 @@
         <div class="EmployeeTable">
             <center>
                 <table class="table" id="Employee">
-                    <thead>
+                    <thead class="theads">
                         <tr>
-                            <th>ID</th>
+                            <th class="thh">ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>City</th>
@@ -47,7 +48,7 @@
                             <th>Zip</th>
                             <th>Email</th>
                             <th>Mobile</th>
-                            <th colspan="4">Action</th>
+                            <th class="thh" colspan="4">Action</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -56,63 +57,90 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="models" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="models" tabindex="-1" role="dialog" aria-labelledby="Title" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <center> <h5 class="modal-title" id="exampleModalLongTitle">EMPLOYEE MANAGEMENT</h5></center>
+                        <center> <h5 class="modal-title" id="Title">EMPLOYEE MANAGEMENT</h5></center>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <center> <div class="h5"> <h5>Edit / Update Record</h5></div></center>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Name</label>
-                            <div class="col-sm-4">
-                                <input type="text" value="firstName" name="FirstName" placeholder="First Name">
-                                <span id="nameError" class="text-danger"></span>
-                            </div>
-                            <div class="col-sm-4">
-                                <input type="text" id="editRow" value="lastName" name="LastName" placeholder="Last Name">
-                                <span id="namesError" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <!--City State Zip-->
 
                         <div class="form-group row">
-                            <label class="col-sm-1 col-form-label">City</label>
-                            <div class="col-sm-4">
-                                <input type="text" id="city" name="Citi" placeholder="City">
-                                <span id="cityError" class="text-danger"></span>
-                            </div>
-                            <div class="col-sm-4">
-                                <input type="text" id="state" name="State" placeholder="State">
-                                <span id="stateError" class="text-danger"></span>
-                            </div>
+                            <label class="col-sm-1 col-form-label">ID</label>
                             <div class="col-sm-3">
-                                <input type="text" id="pin" name="Pincode" placeholder="ZipCode">
-                                <span id="pinError" class="text-danger"></span>
+                                <input type="text" id="id" name="ID" disabled>
+
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="email" id="emails" disabled>
                             </div>
                         </div>
 
-                        <!--Email Phone-->
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Phone Number </label>
-                            <div class="col-sm-4">
-                                <input type="text" id="mobile" name="MobileNo" placeholder="Mobile Number">
-                                <span id="mobileError" class="text-danger"></span>
+                            <label class="col-sm-3 col-form-label">First Name</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" id="firstName">
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Last Name</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" id="lastName">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Mobile Number</label>
+
+                            <div class="col-sm-7">
+                                <input type="text" id="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">City</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" id="citis">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">State</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" id="state">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Pincode</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="zip">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="col-sm-8">
+                                <input type="password" id="passwords" hidden>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" onclick="updateEmployee()" class="btn btn-primary">Update Record</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
             </div>
-        </div>
+         </div>
+       </div>
 
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript">
@@ -135,8 +163,6 @@
 
             ///Delete Method
             function deleteRow(employeeId) {
-                $(function () {
-                    $("#delete").click(function () {
                         confirm("Are You Sure");
                         console.log({ "id": employeeId });
                         $.ajax({
@@ -151,7 +177,61 @@
                                 alert("Something Went Wrong");
                             }
                         });
-                    });
+                     }
+
+            //Edit
+            function editRow(id) {
+                $.ajax({
+                    type: "GET",
+                    url: "/api/getById/" + id,
+
+                    processData: true,
+                    dataType: 'Json',
+                    success: function (data) {
+                        $(data).each(function (index, update) {
+                            console.log(update.employeeId + " " + update.firstName + " " + update.password);
+                            $("#id").val(update.employeeId);
+                            $("#firstName").val(update.firstName);
+                            $("#lastName").val(update.lastName);
+                            $("#emails").val(update.email);
+                            $("#phone").val(update.mobile);
+                            $("#citis").val(update.city);
+                            $("#state").val(update.state);
+                            $("#zip").val(update.zip);
+                            $('#passwords').val(update.password);
+                        });
+                    }
+                });
+            }
+
+            //Update 
+
+            function updateEmployee() {
+                var Employe = {};
+                Employe.employeeId = $("#id").val();
+                Employe.FirstName = $("#firstName").val();
+                Employe.LastName = $("#lastName").val();
+                Employe.City = $("#citis").val();
+                Employe.State = $("#state").val();
+                Employe.Zip = $("#zip").val();
+                Employe.Mobile = $("#phone").val();
+                Employe.Email = $("#emails").val();
+                Employe.password = $("#passwords").val();
+                console.log(JSON.stringify(Employe));
+                $.ajax({
+                    type: "PUT",
+                    url: "/api/updateRecord",
+                    data: JSON.stringify(Employe),
+                    dataType: "",
+                    contentType: "application/json; charset=utf-8",
+                    processData: true,
+                    success: function () {
+                        alert("Record Updated successfully.");
+                        window.location.reload();
+                    },
+                    error: function () {
+                        alert("Error while Updating...");
+                    }
                 });
             }
         </script>

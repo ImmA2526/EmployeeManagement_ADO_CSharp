@@ -1,9 +1,10 @@
 ﻿body {
     font-family: Arial, Helvetica, sans-serif;
-    display:grid;
-    justify-content:center;
-    
+    display: grid;
+    justify-content: center;
+    background-image: url('1.jpg');
 }
+    
 
 h2 {
     display:flex;

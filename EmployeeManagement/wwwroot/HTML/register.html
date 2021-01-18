@@ -3,8 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <title>Employee Management</title>
-    <link rel="stylesheet" href="/css/registerStyle.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/Register.css" />
+
+    <link rel="stylesheet" href="/css/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/css/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/jquery-3.4.1.slim.min.js"></script>
+    <script type="text/javascript" src="/css/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/css/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/popper.min.js"></script>
+
 </head>
 
 <body>
@@ -191,7 +196,7 @@
             Employe.Mobile = $("#mobile").val();
             Employe.Email = $("#email").val();
             Employe.Password = $("#password").val();
-            console.log(JSON.stringify(Employe));
+            console.log(Employe);
 
             $.ajax({
                 type: "POST",
@@ -201,6 +206,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function () {
                     alert("Registration Success...");
+                     window.location.href = "https://localhost:44302/HTML/Login.html"
                     return true;
                 },
                 error: function () {

@@ -99,14 +99,15 @@ namespace EmployeeManagement.Controllers
         /// <param name="id">The identifier.</param>
         /// <param name="model">The model.</param>
         /// <returns></returns>
-        [HttpPut]
-        [Route("api/updateRecord")]
-        public IActionResult Edit(int id)
+        
+        [HttpGet]
+        [Route("api/getById/{id}/")]
+        public IActionResult GetEmployeeByIds(int id)
         {
             try
             {
-                IEnumerable<EmployeeModel> employeeList = this.repository.GetEmployeeBy_ID(id);
-                return this.Ok(employeeList);
+                IEnumerable<EmployeeModel> user = this.repository.GetEmployeeBy_ID(id);
+                return this.Ok(user);
             }
             catch (Exception e)
             {
@@ -114,6 +115,44 @@ namespace EmployeeManagement.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("api/updateRecord")]
+        public IActionResult UpdateEmployee(EmployeeModel update)
+        {
+            var result = this.repository.UpdateEmployee(update);
+            if (result.Equals("SUCCESS"))
+            {
+                return this.Ok(new { success = true, Message = "Record Updated successfully", Data = result });
+            }
+            else
+            {
+                return this.BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// Resets the passwords.
+        /// </summary>
+        /// <param name="oldpass">The oldpass.</param>
+        /// <param name="newpass">The newpass.</param>
+        /// <returns></returns>
+
+        [HttpPut]
+        [Route("api/reset/{OldPassword}/{NewPassword}/")]
+        public IActionResult ResetPasswords(string OldPassword, string NewPassword)
+        {
+            var result = this.repository.ResetPassword(OldPassword, NewPassword);
+            if (result.Equals("SUCCESS"))
+            {
+                return this.Ok(new { success = true, Message = "Password Updated successfully", Data = result });
+            }
+            else
+            {
+                return this.BadRequest();
+            }
+        }
+
+        
 
     }
 }

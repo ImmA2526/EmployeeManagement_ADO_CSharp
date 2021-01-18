@@ -5,6 +5,9 @@ using System.Linq;
 using System;
 
 using System.Web.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Net.Mail;
+using System.Net;
 
 namespace EmployeeRepository
 {
@@ -63,7 +66,6 @@ namespace EmployeeRepository
             return "Employee Deleted";
         }
 
-
         /// <summary>
         /// Gets the employee by identifier.
         /// </summary>
@@ -71,12 +73,75 @@ namespace EmployeeRepository
         /// <returns></returns>
         public IEnumerable<EmployeeModel> GetEmployeeBy_ID(int id)
         {
-            List<EmployeeModel> employees = new List<EmployeeModel>();
-            employees = employeeContext.EmployeeTB.ToList();
-            var edit = this.employeeContext.EmployeeTB.Where(x => x.EmployeeId == id).FirstOrDefault();
-            EmployeeModel model = this.employeeContext.EmployeeTB.Find(edit);
-            return employees;
-
+            List<EmployeeModel> employ = new List<EmployeeModel>();
+            employ.Add(employeeContext.EmployeeTB.Find(id));
+            return employ;
         }
+
+        /// <summary>
+        /// Updates the employee.
+        /// </summary>
+        /// <param name="employeeModel">The employee model.</param>
+        /// <returns></returns>
+        public string UpdateEmployee(EmployeeModel updateModel)
+        {
+            try
+            {
+                this.employeeContext.EmployeeTB.Update(updateModel);
+                this.employeeContext.SaveChangesAsync();
+                return "SUCCESS";
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Resets the password.
+        /// </summary>
+        /// <param name="oldpass">The oldpass.</param>
+        /// <param name="newpass">The newpass.</param>
+        /// <returns></returns>
+        public string ResetPassword(string oldPass, string newPass)
+        {
+            var resetPwd = employeeContext.EmployeeTB.FirstOrDefault(pass => pass.Password == oldPass);
+            if (resetPwd != null)
+            {
+                resetPwd.Password = newPass;
+                employeeContext.Entry(resetPwd).State = EntityState.Modified;
+                employeeContext.SaveChanges();
+                return "SUCCESS";
+            }
+            else
+            {
+                return "NOT_FOUND";
+            }
+        }
+
+        /// <summary>
+        /// Sends the email.
+        /// </summary>
+        /// <param name="emailAddress">The email address.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="subject">The subject.</param>
+        public void SendEmail(string emailAddress, string body, string subject)
+        {
+            using (MailMessage mm = new MailMessage("imraninfo.1996@gmail.com", emailAddress))
+            {
+                mm.Subject = subject;
+                mm.Body = body;
+                mm.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                NetworkCredential NetworkCred = new NetworkCredential("imraninfo.1996@gmail.com", "9175833272*");
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = NetworkCred;
+                smtp.Port = 587;
+                smtp.Send(mm);
+            }
+        }
+
     }
 }
