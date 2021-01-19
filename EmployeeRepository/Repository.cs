@@ -42,7 +42,7 @@ namespace EmployeeRepository
         public string LoginToSystem(string Email, string Password)
         {
             //EmployeeModel model = new EmployeeModel();
-            var Login = this.employeeContext.EmployeeTB.Where(x => x.Email ==Email && x.Password == Password).SingleOrDefault();
+            var Login = this.employeeContext.EmployeeTB.Where(x => x.Email == Email && x.Password == Password).SingleOrDefault();
             this.employeeContext.EmployeeTB.Find(Login);
             string message = "LOGIN SUCCESS";
             return message;
@@ -125,23 +125,36 @@ namespace EmployeeRepository
         /// <param name="emailAddress">The email address.</param>
         /// <param name="body">The body.</param>
         /// <param name="subject">The subject.</param>
-        public void SendEmail(string emailAddress, string body, string subject)
+        
+        public string SendEmail(string emailAddress)
         {
-            using (MailMessage mm = new MailMessage("imraninfo.1996@gmail.com", emailAddress))
+            string body;
+            string subject = "EmployeeManagement Password";
+            var dbEntry = employeeContext.EmployeeTB.FirstOrDefault(e => e.Email == emailAddress);
+            if (dbEntry != null)
             {
-                mm.Subject = subject;
-                mm.Body = body;
-                mm.IsBodyHtml = true;
+                body = dbEntry.Password;
+            }
+            else
+            {
+                return "NOT_FOUND";
+            }
+
+            using (MailMessage mailMessage = new MailMessage("imraninfo.1996@gmail.com", emailAddress))
+            {
+                mailMessage.Subject = subject;
+                mailMessage.Body = body;
+                mailMessage.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
-                NetworkCredential NetworkCred = new NetworkCredential("imraninfo.1996@gmail.com", "9175833272*");
+                NetworkCredential NetworkCred = new NetworkCredential("imraninfo.1996@gmail.com", "Password****");
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
                 smtp.Port = 587;
-                smtp.Send(mm);
+                smtp.Send(mailMessage);
+                return "SUCCESS";
             }
         }
-
     }
 }

@@ -15,5 +15,6 @@ namespace EmployeeRepository
         public IEnumerable<EmployeeModel> GetEmployeeBy_ID(int id);
         public string UpdateEmployee(EmployeeModel updateModel);
         public string ResetPassword(string oldpass, string newpass);
+        public string SendEmail(string emailAddress);
     }
 }

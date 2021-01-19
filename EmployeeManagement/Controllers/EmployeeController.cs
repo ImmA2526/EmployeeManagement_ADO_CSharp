@@ -152,7 +152,25 @@ namespace EmployeeManagement.Controllers
             }
         }
 
-        
+        /// <summary>
+        /// Send password on Email.
+        /// </summary>
+        /// <param name="emailAddress">The email address.</param>
+        /// <returns></returns>
 
+        [HttpGet]
+        [Route("api/emailSend/{emailAddress}/")]
+        public IActionResult SendPassword([FromRoute] string emailAddress)
+        {
+            var result = this.repository.SendEmail(emailAddress);
+            if (result.Equals("SUCCESS"))
+            {
+                return this.Ok(new { success = true, Message = "Password Send Successfully", Data = result });
+            }
+            else
+            {
+                return this.BadRequest();
+            }
+        }
     }
 }
